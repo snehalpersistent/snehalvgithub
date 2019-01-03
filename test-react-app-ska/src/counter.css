@@ -1,0 +1,29 @@
+.button__container {
+    margin-top: 500px;
+    text-align: center;
+  }
+  .button {
+    background-color:blue;
+    border: none;
+    color: white;
+    font-size: 16px;
+    height: 100px;
+    width: 300px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+  .increment_button {
+      margin-top:20px;
+    background-color:pink;
+    border: none;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    width: 200px;
+    cursor: pointer;
+  }
+  .counter_span {
+      margin-left: 40px;
+      font-style: bold italic;
+      font-size: large
+  }
