@@ -12,6 +12,16 @@
     margin-top: 50px;
     cursor: pointer;
   }
+  .hello-btn {
+    background-color:gray;
+    border: black;
+    color: white;
+    font-size: 16px;
+    height: 100px;
+    width: 300px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
   .increment_button {
       margin-top:20px;
     background-color:pink;
@@ -26,4 +36,13 @@
       margin-left: 40px;
       font-style: bold italic;
       font-size: large
+  }
+  .hello-world {
+    position: relative;
+    color: #2c3e50;
+    font-size: 3em;
+  }
+  .hello-world__tech {
+    font-weight: 700;
+    font-style: italic;
   }

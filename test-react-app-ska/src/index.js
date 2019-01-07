@@ -1,7 +1,14 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom'; 
-import Counter from './counter';
+import App from './app';
+import {store } from './store';
 
-//const element = <h1>Hello World</h1>;
+//Main fle rendering the root html element from App commponent
+const render = function() {
+    ReactDOM.render(<div>
+        <App />
+        </div>, document.getElementById('root'));
+ }
+ render()
+ store.subscribe(render);
 
-ReactDOM.render(<Counter />, document.getElementById('root'));
