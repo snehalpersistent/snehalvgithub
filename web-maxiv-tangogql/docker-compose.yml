@@ -1,0 +1,24 @@
+version: "3"
+services:
+  database:
+    image: tangocs/mysql:latest
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+  control-system:
+    image: tangocs/tango-cs:latest
+    environment: 
+      - ORB_PORT=10000
+      - TANGO_HOST=127.0.0.1:10000
+      - MYSQL_HOST=database:3306
+      - MYSQL_USER=tango
+      - MYSQL_PASSWORD=tango
+      - MYSQL_DATABASE=tango
+  tangoql:
+    build: .
+    restart: always
+    ports:
+      - "5004:5004"
+    environment:
+      - TANGO_HOST=control-system:10000
+    volumes:
+      - ./logs:/var/log/tangogql

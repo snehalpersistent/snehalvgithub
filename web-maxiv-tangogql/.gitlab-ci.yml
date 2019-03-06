@@ -1,0 +1,51 @@
+# before_script:
+#   - docker info
+
+# # unit_test:
+# #   stage: test
+# #   script:
+# #      - python test.py
+# #   only:
+# #     - merge-requests
+# #   tags: [maxiv-centos7]
+
+
+build_image:
+  stage: build
+  script:
+    - docker build . -t docker.maxiv.lu.se/graphql
+  only:
+    - master
+
+# # unit_test:
+# #  stage: test
+# #  script:
+# #    - docker build . -f Dockerfile-test -t graphql-test
+# #    - docker run graphql-test
+# #  only:
+# #    - master
+
+deploy_image:
+  stage: deploy
+  script:
+  - docker push docker.maxiv.lu.se/graphql
+  - 'curl -H "Authorization: Bearer $AWX_TOKEN" -XPOST https://ansible.maxiv.lu.se/api/v2/job_templates/33/launch/'
+  only:
+    - master
+
+### DEVELOP ###
+
+build_image:
+  stage: build
+  script:
+    - docker build . -t docker.maxiv.lu.se/graphql-test
+  only:
+    - develop
+
+deploy_image:
+  stage: deploy
+  script:
+  - docker push docker.maxiv.lu.se/graphql-test
+  - 'curl -H "Authorization: Bearer $AWX_TOKEN" -XPOST https://ansible.maxiv.lu.se/api/v2/job_templates/49/launch/'
+  only:
+    - develop
